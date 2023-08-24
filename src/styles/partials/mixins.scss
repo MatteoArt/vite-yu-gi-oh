@@ -1,0 +1,8 @@
+@mixin d-flex {
+    display: flex;
+    flex-direction: row;
+}
+@mixin text-white {
+    color: white;
+    text-transform: uppercase;
+}
