@@ -7,7 +7,7 @@ export default {
             type: Object,
             required: true
         }
-    }
+    },
 }
 
 </script>
@@ -21,7 +21,7 @@ export default {
         </div>
         <div class="content">
             <span> {{ singleCard.name }} </span>
-            <span> Race: {{ singleCard.race }} </span>
+            <span> {{ singleCard.archetype }} </span>
         </div>
     </div>
 

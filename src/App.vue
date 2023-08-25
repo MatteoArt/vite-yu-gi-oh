@@ -2,11 +2,13 @@
 
 import TheHeader from "./components/TheHeader.vue";
 import CardContainer from "./components/CardContainer.vue";
+import Select from "./components/Select.vue";
 
 export default {
   components: {
     TheHeader,
     CardContainer,
+    Select,
   }
 }
 
@@ -16,6 +18,7 @@ export default {
      <TheHeader></TheHeader>
 
      <main>
+      <Select></Select>
       <div class="wrapper">
         <CardContainer></CardContainer>
       </div>
@@ -28,7 +31,7 @@ export default {
 
 main {
   background-color: $color_primary;
-  padding-top: 80px;
+  padding-top: 30px;
   padding-bottom: 60px;
 }
 .wrapper {

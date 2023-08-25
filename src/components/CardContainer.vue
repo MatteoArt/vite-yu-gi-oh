@@ -1,8 +1,8 @@
 <script>
 
-import axios from "axios";
 import Card from "./Card.vue";
 import CountBar from "./CountBar.vue";
+import { store, filterByArchetype, fetchCards } from "../store.js";
 
 export default {
     components: {
@@ -13,26 +13,15 @@ export default {
         return {
             //dentro questa proprietà vado a salvare la risposta axios
             //del server
-            cardList: [],
+            store,
         }
     },
     methods: {
-        //funzione che recupera la risposta di axios
-        fetchCards() {
-            const url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0";
-
-            axios.get(url).then((response) => {
-                let dateObj = response.data;
-                let ris = dateObj.data; //data è la chiave che contiene l'array di oggetti in "data di axios"
-
-                this.cardList = ris; //copio dentro cardlist il risultato
-                console.log(this.cardList);
-            })
-        }
+        fetchCards,
     },
-    //appena si carica il componente (e quindi anche la pagina) eseguo la chiamata axios
+    //appena viene caricato il componente eseguo la chiamata axios
     mounted() {
-        this.fetchCards();
+        fetchCards();
     }
 }
 
@@ -40,10 +29,10 @@ export default {
 
 <template>
 
-    <CountBar :numberOfCards="cardList.length"></CountBar>
+    <CountBar :numberOfCards="store.cardList.length"></CountBar>
     <div class="card-list">
-        <Card v-for="cardItem in cardList"
-        :singleCard="cardItem"></Card>
+        <Card v-for="cardItem in store.cardList"
+        :singleCard="cardItem" :key="cardItem.id"></Card>
     </div>
 
 </template>
