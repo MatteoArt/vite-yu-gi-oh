@@ -2,7 +2,7 @@
 
 import Card from "./Card.vue";
 import CountBar from "./CountBar.vue";
-import { store, filterByArchetype, fetchCards } from "../store.js";
+import { store, fetchCards } from "../store.js";
 
 export default {
     components: {

@@ -1,7 +1,7 @@
 <script>
 
 import axios from "axios";
-import { store, filterByArchetype, fetchCards } from "../store.js";
+import { store, filterByArchetype } from "../store.js";
 
 export default {
     data() {

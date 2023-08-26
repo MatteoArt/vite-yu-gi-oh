@@ -9,24 +9,17 @@ export const store = reactive({
 //funzione che prende in input il valore selezionato nella select di 
 //ricerca e lo utilizza nell'url facendo una ricerca parametrizzata
 export function filterByArchetype(searchTxt) {
-    //svuoto l'array su cui ciclo per poter mostrare nuovi dati
-    //secondo la query di ricerca
     store.cardList = [];
 
-    axios.get("https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=" +
-        searchTxt).then((response) => {
-            console.log(response.data)
-            store.cardList = response.data;
-            console.log(store.cardList);
-        })
-
+    fetchCards(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${searchTxt}`);
 
 };
 
 
 //funzione che recupera la risposta di axios
-export function fetchCards() {
-    const url = "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0";
+export function fetchCards(path) {
+    //se path ha un valore, allora uso quello, altrimenti uso il link (stringa) di default
+    const url = path ? path : "https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0";
 
     axios.get(url).then((response) => {
         let dateObj = response.data;
