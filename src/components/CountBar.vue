@@ -3,13 +3,22 @@
 export default {
     props: {
         numberOfCards: Number,
+        arc: Object,
     }
 }
 
 </script>
 
 <template>
-    <div class="bar">Found {{ numberOfCards }} cards</div>
+    <div v-if="numberOfCards>1" class="bar">
+        Found {{ numberOfCards }} cards for {{ (arc.archetype) }}
+    </div>
+    <div v-else-if="numberOfCards===1" class="bar">
+        Found {{ numberOfCards }} card for {{ (arc.archetype) }}
+    </div>
+    <div v-else-if="numberOfCards===0" class="bar">
+        Found {{ numberOfCards }} cards
+    </div>
 </template>
 
 <style lang="scss" scoped>
@@ -17,6 +26,7 @@ export default {
 @use "../styles/partials/mixins.scss" as *;
 
 $space: 10px;
+
 .bar {
     background-color: #212529;
     color: white;

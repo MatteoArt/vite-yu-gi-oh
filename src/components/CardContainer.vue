@@ -29,7 +29,8 @@ export default {
 
 <template>
 
-    <CountBar :numberOfCards="store.cardList.length"></CountBar>
+    <CountBar v-if="store.showBar" :numberOfCards="store.cardList.length"
+    :arc="store.cardList[0] ? store.cardList[0] : {}"></CountBar>
     <div class="card-list">
         <Card v-for="cardItem in store.cardList"
         :singleCard="cardItem" :key="cardItem.id"></Card>

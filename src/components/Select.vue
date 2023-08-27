@@ -1,7 +1,7 @@
 <script>
 
 import axios from "axios";
-import { store, filterByArchetype } from "../store.js";
+import { store, filterByArchetype} from "../store.js";
 
 export default {
     data() {
@@ -31,6 +31,9 @@ export default {
 
 <template>
     <div class="option-wrapper">
+        <div class="icon" @click="store.ricarica">
+            <i class="fa-solid fa-rotate-right fa-lg"></i>
+        </div>
         <input list="archetypes" name="arch" id="arch"
         placeholder="Filter by archetype" v-model="store.searchArch">
         <datalist id="archetypes">
@@ -49,6 +52,13 @@ export default {
     margin-left: 160px;
     @include d-flex;
     gap: 8px;
+    align-items: center;
+
+    .icon {
+        margin-right: 8px;
+        color: #5C4033;
+        cursor: pointer;
+    }
 
     input#arch {
         padding: 6px;
